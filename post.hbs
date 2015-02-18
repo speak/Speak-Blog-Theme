@@ -1,0 +1,116 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! Everything inside the #post tags pulls data from the post }}
+{{#post}}
+
+{{> post-header}}
+
+<script>
+  $(document).ready(function() {
+    // Wrap first letter of intro
+    var $intro = $('.post-content > p:first-child');
+    $intro.html($intro.html().replace(/^[^a-zA-Z]*([a-zA-Z])/g, '<span class="big-cap">$1</span>'));
+
+    // Add highlight
+    var highlight_color = $(".custom-post-data .highlight-color").text();
+    $("article a:not(.ignore-highlight)").css('color', highlight_color);
+    $(".post-content blockquote").css('border-color', highlight_color);
+    $(".main-header-content hr").css('background-color', highlight_color);
+    $(".post-content > p:first-child > span").css('color', highlight_color);
+  })
+</script>
+
+<main class="content" role="main">
+
+    <article class="{{post_class}}">
+
+        <section class="post-content">
+            {{content}}
+        </section>
+
+        <footer class="post-footer">
+
+        {{! Everything inside the #author tags pulls data from the author }}
+        {{#author}}
+
+          <div class="post-footer-author">
+
+            {{#if image}}
+            <figure class="author-image">
+                <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
+            </figure>
+            {{/if}}
+
+            <section class="author">
+                <h4>About the author:</h4>
+
+                {{#if bio}}
+                    <p>{{{bio}}}</p>
+                {{/if}}
+         {{/author}}
+
+                <section class="share">
+                    <h4>Share this post</h4>
+                    <a class="icon-twitter ignore-highlight" href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        <span class="hidden">Twitter</span>
+                    </a>
+                    <a class="icon-facebook ignore-highlight" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                        <span class="hidden">Facebook</span>
+                    </a>
+                    <a class="icon-google-plus ignore-highlight" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                        <span class="hidden">Google+</span>
+                    </a>
+                </section>
+            </section>
+
+          </div>
+
+
+
+        </footer>
+
+        <section class="newsletter post-newsletter">
+          <h4>Weekly Newsletter</h4>
+
+          <p>
+            You'll receive a weekly email with great content around business, productivity and design.
+          </p>
+
+          <form action="//sqwiggle.us6.list-manage.com/subscribe/post?u=0e8642f456c9823c71db27621&amp;id=7403b78531" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email address">
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_0e8642f456c9823c71db27621_7403b78531" tabindex="-1" value=""></div>
+            <div class="clear">
+              <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </div>
+          </form>
+        </section>
+
+        <section class="comments">
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'speakapp'; // required: replace example with your forum shortname
+              var disqus_identifier = '{{post.id}}';
+
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </section>
+
+    </article>
+
+</main>
+
+{{/post}}

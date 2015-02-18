@@ -1,0 +1,26 @@
+{{#foreach posts}}
+  {{#if featured}}
+      <header data-parallax="scroll" data-image-src="{{image}}" class="main-header post-header">
+      <div class="header-overlay"></div>
+      {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" width="124" height="41" /></a>{{/if}}
+        {{> header-nav}}
+        <div class="vertical">
+            <div class="main-header-content inner">
+                <span class="featured-header caps">Featured Article</span>
+                <h1 class="caps">{{title}}</h1>
+                <p class="excerpt">{{excerpt}}</p>
+            </div>
+        </div>
+    </header>
+  {{/if}}
+{{/foreach}}
+
+<nav class="clearfix">
+  <ul>
+    <li><a href="{{@blog.url}}">All</a></li>
+    <li><a href="{{@blog.url}}/tag/productivity/">Productivity</a></li>
+    <li><a href="{{@blog.url}}/tag/design/">Design</a></li>
+    <li><a href="{{@blog.url}}/tag/marketing/">Marketing</a></li>
+    <li><a href="{{@blog.url}}/tag/customer-success/">Customer Success</a></li>
+  </ul>
+</nav>

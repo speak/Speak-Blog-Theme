@@ -1,0 +1,16 @@
+  <header data-parallax="scroll" data-image-src="{{cover}}" class="main-header post-header">
+  <div class="header-overlay"></div>
+  {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" width="124" height="41" /></a>{{/if}}
+    {{> header-nav}}
+      <div class="main-header-content inner">
+        {{#if image}}
+        <figure class="author-image">
+            <div class="img" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></div>
+        </figure>
+        {{/if}}
+        <h1>{{name}}</h1>
+        <p class="bio">
+          {{{bio}}}
+        </p>
+      </div>
+</header>

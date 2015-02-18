@@ -1,0 +1,20 @@
+{{! This is the post loop - each post will be output using this markup }}
+<div class="loop">
+  {{#foreach posts}}
+  <article class="{{post_class}}">
+      <header class="post-header">
+          <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+      <div class="post-meta">
+  {{#if author.image}}<img class="author-thumb" src="{{author.image}}" alt="Author image" nopin="nopin" />{{/if}}
+          <span class="author">By {{author}}</span>
+      </div>
+      </header>
+      <section class="post-excerpt">
+          <p>{{excerpt words="46"}}... <div class="read-more"><a href="{{url}}">READ MORE</a></div></p>
+      </section>
+  </article>
+  {{/foreach}}
+</div>
+
+{{! Previous/next page links - displayed on every page }}
+{{pagination}}
