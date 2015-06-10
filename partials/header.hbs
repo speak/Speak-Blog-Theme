@@ -1,7 +1,6 @@
 {{#foreach posts}}
   {{#if featured}}
       <header data-parallax="scroll" data-image-src="{{image}}" class="main-header post-header">
-      <div class="header-overlay"></div>
       {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" width="124" height="41" /></a>{{/if}}
         {{> header-nav}}
         <div class="vertical">

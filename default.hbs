@@ -22,6 +22,15 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{{asset "js/parallax.min.js"}}"></script>
+    
+    <script type="text/javascript">
+    $(function() {
+      // delay hellobar
+      setTimeout(function() {
+        $('.Slider').fadeIn();
+      }, 10000);
+    });
+    </script>
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
@@ -41,6 +50,8 @@
     {{! The main JavaScript file for Casper }}
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+    
+    <script src="//my.hellobar.com/50dfb5d1569b84aea2fff2c401e70742ff112084.js" type="text/javascript" charset="utf-8" async="async"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
